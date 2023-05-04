@@ -9,7 +9,10 @@ import { CreateProductController } from './controllers/product/CreateProductCont
 import uploadConfig from './config/multer'
 import multer from 'multer';
 import { ListByCategoryController } from './controllers/product/ListByCategoryController';
+import { DeleteOrderController } from './controllers/order/DeleteOrderController';
 import { CreateOrderController } from './controllers/order/CreateOrderController';
+import { AddItemController } from './controllers/order/AddItemController';
+import { DeleteItemController } from './controllers/order/DeleteItemController';
 
 
 
@@ -38,6 +41,11 @@ router.get('/category/product', isAuthenticated, new ListByCategoryController().
 
 //Rotas de Order
 router.post('/order', isAuthenticated, new CreateOrderController(). handle)
+router.delete('/order', isAuthenticated, new DeleteOrderController().handle)
+
+//Rotas de AddItem na Order
+router.post('/order/add', isAuthenticated, new AddItemController().handle)
+router.delete('/order/delete', isAuthenticated, new DeleteItemController().handle)
 
 
 export { router }; 
